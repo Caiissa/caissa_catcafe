@@ -1,9 +1,9 @@
 package catcafe;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CatCafeTest {
 
@@ -31,7 +31,7 @@ class CatCafeTest {
 
     @Test
     void test_get_cat_by_name_found() {
-        //given
+        // given
         FelineOverLord cat = new FelineOverLord("Miss Chief Sooky", 2);
         cafe.addCat(cat);
 
@@ -44,7 +44,7 @@ class CatCafeTest {
 
     @Test
     void test_get_cat_by_name_not_found() {
-        //given
+        // given
         cafe.addCat(new FelineOverLord("Miss Chief Sooky", 2));
 
         // when
@@ -56,7 +56,7 @@ class CatCafeTest {
 
     @Test
     void test_get_cat_by_name_null_input() {
-        //given
+        // given
         cafe.addCat(new FelineOverLord("Miss Chief Sooky", 2));
 
         // when
@@ -82,8 +82,8 @@ class CatCafeTest {
     }
 
     @Test
-    void test_get_cat_by_weight_max_weight_edge_case(){
-        //given
+    void test_get_cat_by_weight_max_weight_edge_case() {
+        // given
         FelineOverLord cat = new FelineOverLord("Fitzby Darnsworth", 5);
         cafe.addCat(cat);
 
@@ -95,21 +95,21 @@ class CatCafeTest {
     }
 
     @Test
-    void test_get_cat_by_weight_min_weight_edge_case(){
-        //given
+    void test_get_cat_by_weight_min_weight_edge_case() {
+        // given
         FelineOverLord cat = new FelineOverLord("Miss Chief Sooky", 2);
         cafe.addCat(cat);
 
         // when
         var getCat = cafe.getCatByWeight(2, 3);
 
-        //then
+        // then
         assertEquals(cat, getCat);
     }
 
     @Test
-    void test_get_cat_by_weight_edge_case(){
-        //given
+    void test_get_cat_by_weight_edge_case() {
+        // given
         FelineOverLord cat = new FelineOverLord("Miss Chief Sooky", 2);
         cafe.addCat(cat);
 

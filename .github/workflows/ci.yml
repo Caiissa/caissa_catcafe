@@ -1,4 +1,4 @@
-name: Java CI Pipeline
+name: CatCafe Continuous Integration
 
 on:
     push:
@@ -6,32 +6,36 @@ on:
     pull_request:
         branches: [ "master" ]
 
+permissions:
+    contents: read
+
 jobs:
-    build-test-format:
+    quality-check:
+        name: Build, Test and Formatting Check
         runs-on: ubuntu-latest
 
         steps:
-            - name: Repository auschecken
+            - name: Checkout repository
               uses: actions/checkout@v6
 
-            - name: Java 25 einrichten
+            - name: Set up Java 25
               uses: actions/setup-java@v5
               with:
-                  distribution: 'temurin'
-                  java-version: '25'
-                  cache: 'gradle'
+                  distribution: temurin
+                  java-version: 25
+                  cache: gradle
 
-            - name: Gradle vorbereiten
+            - name: Set up Gradle
               uses: gradle/actions/setup-gradle@v5
 
-            - name: Gradle Wrapper ausführbar machen
+            - name: Make Gradle wrapper executable
               run: chmod +x ./gradlew
 
-            - name: Projekt kompilieren
+            - name: Compile project
               run: ./gradlew compileJava --no-daemon
 
-            - name: JUnit Tests ausführen
+            - name: Run JUnit tests
               run: ./gradlew test --no-daemon
 
-            - name: Codeformatierung prüfen
+            - name: Verify code formatting with Spotless
               run: ./gradlew spotlessCheck --no-daemon

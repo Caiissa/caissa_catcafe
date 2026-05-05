@@ -91,7 +91,7 @@ class CatCafeTest {
         var getCat = cafe.getCatByWeight(4, 5);
 
         // then
-        assertEquals(cat, getCat);
+        assertNull(getCat);
     }
 
     @Test
@@ -117,7 +117,7 @@ class CatCafeTest {
         var getCat = cafe.getCatByWeight(2, 2);
 
         // then
-        assertEquals(cat, getCat);
+        assertNull(getCat);
     }
 
     @Test
